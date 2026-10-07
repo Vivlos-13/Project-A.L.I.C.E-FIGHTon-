@@ -1,0 +1,142 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://sprites/ALICE.png" type="Texture" id=1]
+[ext_resource path="res://sprites/bg.png" type="Texture" id=2]
+[ext_resource path="res://scenes/SpawnTimer.gd" type="Script" id=3]
+[ext_resource path="res://sprites/Heart.png" type="Texture" id=4]
+[ext_resource path="res://scenes/game.gd" type="Script" id=5]
+[ext_resource path="res://scenes/ALICE.gd" type="Script" id=6]
+[ext_resource path="res://music/Theme-1.mp3" type="AudioStream" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="main" type="Node2D"]
+position = Vector2( 1, 0 )
+script = ExtResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -31.0
+margin_top = -39.0
+margin_right = 1040.0
+margin_bottom = 617.0
+rect_pivot_offset = Vector2( 220, 68 )
+texture = ExtResource( 2 )
+expand = true
+
+[node name="SpawnContainer" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 38, -24 )
+
+[node name="Position2D2" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 92, -22 )
+
+[node name="Position2D3" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 143, -24 )
+
+[node name="Position2D4" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 178, -23 )
+
+[node name="Position2D5" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 232, -21 )
+
+[node name="Position2D6" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 283, -23 )
+
+[node name="Position2D7" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 331, -22 )
+
+[node name="Position2D8" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 385, -20 )
+
+[node name="Position2D9" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 436, -22 )
+
+[node name="Position2D10" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 475, -24 )
+
+[node name="Position2D11" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 529, -22 )
+
+[node name="Position2D12" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 580, -24 )
+
+[node name="Position2D13" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 617, -24 )
+
+[node name="Position2D14" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 671, -22 )
+
+[node name="Position2D15" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 722, -24 )
+
+[node name="Position2D16" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 766, -24 )
+
+[node name="Position2D17" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 820, -22 )
+
+[node name="Position2D18" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 871, -24 )
+
+[node name="Position2D19" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 898, -22 )
+
+[node name="Position2D20" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 952, -20 )
+
+[node name="Position2D21" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 1003, -22 )
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+position = Vector2( -14, 0 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+script = ExtResource( 3 )
+
+[node name="ALICE" type="Sprite" parent="."]
+position = Vector2( 498.704, 540 )
+scale = Vector2( 0.296298, 0.278464 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 230, 49, 164, 182 )
+script = ExtResource( 6 )
+
+[node name="hurtarea" type="Area2D" parent="ALICE"]
+position = Vector2( -356.749, -183.148 )
+scale = Vector2( 3.37498, 3.59113 )
+
+[node name="hurtbox" type="CollisionShape2D" parent="ALICE/hurtarea"]
+position = Vector2( 110, 60 )
+shape = SubResource( 1 )
+
+[node name="Heart1" type="TextureRect" parent="ALICE"]
+margin_left = -140.75
+margin_top = 96.9601
+margin_right = -40.7499
+margin_bottom = 196.96
+texture = ExtResource( 4 )
+
+[node name="Heart2" type="TextureRect" parent="ALICE"]
+margin_left = -36.7498
+margin_top = 96.9601
+margin_right = 63.2502
+margin_bottom = 196.96
+rect_pivot_offset = Vector2( 50.9989, 98.7783 )
+texture = ExtResource( 4 )
+
+[node name="Heart3" type="TextureRect" parent="ALICE"]
+margin_left = 67.2501
+margin_top = 96.9601
+margin_right = 167.25
+margin_bottom = 196.96
+rect_pivot_offset = Vector2( 50.9989, 98.7783 )
+texture = ExtResource( 4 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = -20.0
+autoplay = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
